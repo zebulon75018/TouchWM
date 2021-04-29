@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui declarative
+QT       += core gui widgets webenginewidgets x11extras
 
 TARGET = QTouchWM
 TEMPLATE = app

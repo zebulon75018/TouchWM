@@ -4,14 +4,16 @@
 
 #include <QDesktopWidget>
 #include <QGraphicsObject>
-#include <QDeclarativeView>
-#include <QDeclarativeContext>
-#include <QDeclarativeProperty>
+//#include <QDeclarativeView>
+//#include <QDeclarativeContext>
+//#include <QDeclarativeProperty>
 #include <QRect>
 #include <QUrl>
 #include <QProcess>
+#include <QFrame>
 
-class Desktop : public QDeclarativeView
+//class Desktop : public QDeclarativeView
+class Desktop : public QFrame
 {
     Q_OBJECT
 public:

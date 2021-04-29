@@ -36,7 +36,7 @@ void Client::getWMName()
         }
 
         data = NULL;
-        XGetWindowProperty(QX11Info::display(), id, WMApp::netatom[NetWMIconName], 0, 500, FALSE, AnyPropertyType, &type, &format, &nitems, &extra, &data);
+        XGetWindowProperty(QX11Info::display(), id, WMApp::netatom[NetWMIconName], 0, 500, False, AnyPropertyType, &type, &format, &nitems, &extra, &data);
 
         if(data != NULL)
         {

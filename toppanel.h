@@ -1,9 +1,9 @@
 #ifndef TOPPANEL_H
 #define TOPPANEL_H
 
-#include <QDeclarativeView>
-#include <QDeclarativeContext>
-#include <QDeclarativeProperty>
+//#include <QDeclarativeView>
+//#include <QDeclarativeContext>
+//#include <QDeclarativeProperty>
 #include <QGraphicsObject>
 #include <QDirIterator>
 #include <QDir>
@@ -11,8 +11,10 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QRegExp>
+#include <QWidget>
+#include <QLabel>
 
-class TopPanel : public QDeclarativeView
+class TopPanel : public QLabel
 {
     Q_OBJECT
 public:

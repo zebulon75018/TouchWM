@@ -2,14 +2,15 @@
 #include <QDebug>
 
 TopPanel::TopPanel(QWidget *parent) :
-    QDeclarativeView(parent)
+    QLabel("top panel",parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::FramelessWindowHint| Qt::WindowStaysOnTopHint);
-    rootContext()->setContextProperty("toppanel", this);
+    /*rootContext()->setContextProperty("toppanel", this);
     setSource(QUrl::fromLocalFile("Panel.qml"));
 
-    setFocusPolicy(Qt::StrongFocus);
     setResizeMode(QDeclarativeView::SizeViewToRootObject);
+    */
+    setFocusPolicy(Qt::StrongFocus);
     scanningApps();
 }
 

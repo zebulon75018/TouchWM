@@ -23,13 +23,15 @@ WMApp::WMApp(int &argc, char **argv) :
     desktop = QApplication::desktop();
     desk = new Desktop(desktop);
     desk->show();
-    panel = new TopPanel;
-    panel->show();
+    panel = NULL;
+    //panel = new TopPanel;
+    //panel->show();
+    /*
     QObject* work = panel->rootObject();
     QDeclarativeProperty::write((QObject*)work, "width",desk->width());
     QDeclarativeProperty::write((QObject*)work, "panelMaximalHeight",desk->height());
-
-    connect(panel,SIGNAL(runProcess(QString)), desk, SLOT(runProcess(QString)));
+    */
+    //connect(panel,SIGNAL(runProcess(QString)), desk, SLOT(runProcess(QString)));
     connect(this,SIGNAL(newClient(QString,int)), desk, SIGNAL(addClient(QString,int)));
     connect(this, SIGNAL(closeClient(int)), desk, SIGNAL(closeClient(int)));
     connect(desk, SIGNAL(turnClient(int)), this, SLOT(unmapClient(int)));
@@ -53,7 +55,7 @@ WMApp::WMApp(int &argc, char **argv) :
     netatom[NetWMFullscreen] = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", False);
     netatom[NetWMWindowType] = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE", False);
     netatom[NetWMWindowTypeDialog] = XInternAtom(dpy, "_NET_WM_WINDOW_TYPE_DIALOG", False);
-    netatom[NetWMIconName] = XInternAtom(dpy, "_NET_WM_ICON_NAME", FALSE);
+    netatom[NetWMIconName] = XInternAtom(dpy, "_NET_WM_ICON_NAME", False);
 
     XSelectInput(dpy, root,
         SubstructureNotifyMask|SubstructureRedirectMask|
@@ -65,13 +67,13 @@ WMApp::WMApp(int &argc, char **argv) :
         EnterWindowMask);
 
 
-    XSync(dpy, FALSE);
+    XSync(dpy, False);
 }
 
 Client* WMApp::getClient(Window id)
 {
 
-    if(id != desk->winId() || id != panel->winId()) {
+    if(id != desk->winId() /*|| id != panel->winId()*/) {
     Client* w = clients.value(id, 0);
     if(w) return w;
     w = new Client(id);
